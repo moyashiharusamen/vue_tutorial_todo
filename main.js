@@ -61,6 +61,15 @@ const app = new Vue({
             this.todos.splice(index, 1)
         }
     },
+    computed: {
+        computedTodos() {
+            // データ current が -1 ならすべて
+            // それ以外なら current と state が一致するものだけに絞り込む
+            return this.todos.filter((el) => {
+                return this.current < 0 ? true : this.current === el.state
+            }, this)
+        }
+    },
     watch: {
         // オプションを使う場合はオブジェクト形式にする
         todos: {
