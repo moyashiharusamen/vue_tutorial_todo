@@ -26,7 +26,7 @@ const app = new Vue({
     methods: {
         // ToDo 追加の処理
         doAdd(event, value) {
-            const comment = this.$ref.comment
+            const comment = this.$refs.comment
 
             // 入力がなければ何もしないで return
             if (!comment.value.length) return
