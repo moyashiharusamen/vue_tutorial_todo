@@ -43,5 +43,16 @@ const app = new Vue({
             // フォーム要素を空にする
             comment.value = ''
         }
+    },
+    watch: {
+        // オプションを使う場合はオブジェクト形式にする
+        todos: {
+            // 引数はウォッチしているプロパティの変更後の値
+            handler(todos) {
+                todoStorage.save(todos)
+            },
+            // deep オプションでネストしているデータも監視できる
+            deep: true
+        }
     }
 })
