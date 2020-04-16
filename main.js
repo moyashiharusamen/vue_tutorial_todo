@@ -42,6 +42,15 @@ const app = new Vue({
 
             // フォーム要素を空にする
             comment.value = ''
+        },
+        // 状態変更の処理
+        doChangeState(item) {
+            item.state = item.state ? 0 : 1
+        },
+        // 削除の処理
+        doRemove(item) {
+            const index = this.todos.indexOf(item)
+            this.todos.splice(index, 1)
         }
     },
     watch: {
