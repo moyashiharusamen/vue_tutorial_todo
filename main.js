@@ -54,5 +54,9 @@ const app = new Vue({
             // deep オプションでネストしているデータも監視できる
             deep: true
         }
+    },
+    created() {
+        // インスタンス生成時に自動的に fetch() する
+        this.todos = todoStorage.fetch()
     }
 })
