@@ -22,5 +22,26 @@ const app = new Vue({
     el: '#app',
     data: {
         todos: []
+    },
+    methods: {
+        // ToDo 追加の処理
+        doAdd(event, value) {
+            const comment = this.$ref.comment
+
+            // 入力がなければ何もしないで return
+            if (!comment.value.length) return
+
+            // {新しいID, コメント, 作業状態}
+            // というオブジェクトを現在の todos リストへ push
+            // 作業状態「state」はデフォルト「作業中=0」で作成
+            this.todos.push({
+                id: todoStorage.uid++,
+                comment: comment.value,
+                state: 0
+            })
+
+            // フォーム要素を空にする
+            comment.value = ''
+        }
     }
 })
