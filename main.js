@@ -68,6 +68,13 @@ const app = new Vue({
             return this.todos.filter((el) => {
                 return this.current < 0 ? true : this.current === el.state
             }, this)
+        },
+        labels() {
+            return this.options.reduce((a, b) => {
+                return Object.assign(a, { [b.value]: b.label })
+            }, {})
+            // キーから見つけやすいように、次のように加工したデータを作成
+            // {0: '作業中', 1: '完了', -1: 'すべて'}
         }
     },
     watch: {
